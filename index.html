@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="./css/milligram.css">
+    <link rel="stylesheet" type="text/css" href="./css/food-app.css">
+</head>
+<body>
+    
+    <main class="wrapper">
+        <nav class="navigation">
+            <section class="container">
+                <a href="./index.html" class="navigation-title">Mad Appen</a>
+                <ul class="navigation-list float-right">
+                    <li class="navigation-item">
+                        <a href="./" class="navigation-link">Menu item 1</a>
+                    </li>
+                    <li class="navigation-item">
+                        <a href="./" class="navigation-link">Menu item 2</a>
+                    </li>
+                </ul>
+            </section>
+        </nav>
+
+        <section class="container" id="app">
+            <div class="row">
+                
+                <div class="column dishes">
+                    <h3>Alle retter:</h3>
+                    <ul class="dishes-list">
+                        <li v-for="dish in sortedDishes">
+                            {{ dish }}
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="column">
+                    <h3>Forslag:</h3>
+                    <dl class="weekdays-list">
+                        <li v-for="(weekday, index) in weekdays">
+                            <a v-on:click.prevent="refreshDish(index)" href="#">&#x21bb;</a> | 
+                            <a v-on:click.prevent="deleteDish(index)" href="#">&#9447;</a>
+                            {{ weekday.name }}: {{weekday.dish.name}}
+                        </li>
+                    </dl>
+
+                    <button v-on:click="sevenRandomDishes()">Find retter</button>
+                </div>
+
+            </div>
+        </section>
+        
+        <footer>
+            Du har ramt bunden :-)
+        </footer>
+
+    </main>
+
+    <script src="./js/vue.js"></script>
+    <script src="./js/food-app.js"></script>
+</body>
+</html>
